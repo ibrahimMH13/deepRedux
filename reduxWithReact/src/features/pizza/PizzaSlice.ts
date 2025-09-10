@@ -13,11 +13,11 @@ const pizzaReducer = (state: pizzaState = initialPizzaOrderState,action:pizzaAct
     switch(action.type){
 
         case PIZZA_ORDER:
-            console.log(PIZZA_ORDER);
             return {
                 ... state,
                 pizzaBase: state.pizzaBase - 1,
             }
+
         default:
             return state;
     }

@@ -4,7 +4,7 @@ import { pizzaState } from './PizzaType';
 import { OrderPizza } from './PizzaActions';
 
 const HookContainer = () => {
-   const pizzaBase = useSelector((state: pizzaState) => state.pizzaBase);
+   const pizzaBase = useSelector((state: pizzaState) => state.pizza.pizzaBase);
    const dispatch = useDispatch();
 
   return (
