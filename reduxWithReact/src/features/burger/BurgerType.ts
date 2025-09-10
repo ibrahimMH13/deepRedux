@@ -1,0 +1,1 @@
+export const ORDER_BURGER = "order_burger";
