@@ -2,20 +2,34 @@ import React, { useEffect } from 'react'
 import { connect, useDispatch, useSelector } from 'react-redux'
 import { fetchProducts } from './ProductCreator';
 
-const Products = (props) => {
+// so here is the old way to access state
+const Products = (
+//  props
+) => {
 
     // const products = useSelector((state:any)=> state.product.products);
     // const loading = useSelector((state:any)=> state.product.loading);
     // const error = useSelector((state:any)=> state.product.error);
     // const dispatch = useDispatch();\
 
-    const { products, loading, error} = props.product;
-    console.log("#inside Products",products);
-    console.log("#inside Products",loading);
-    console.log("#inside Products",error);
+  //  const { products, loading, error} = props.product;
+
+    // console.log("#inside Products",products);
+    // console.log("#inside Products",loading);
+    // console.log("#inside Products",error);
+    // useEffect(()=>{
+    //  props.fetchNow();
+    // },[])
+
+    // Hooks
+    const { products } = useSelector((state:any)=> state.product);
+    const dispatch = useDispatch<any>();
+
     useEffect(()=>{
-      props.fetchNow();
-    },[])
+      dispatch(fetchProducts());
+    },[
+
+    ])
   return (
     <div>
       {products.length > 0? (
@@ -33,16 +47,18 @@ const Products = (props) => {
   )
 }
 
-const mapStateToProps = (state)=>{
-  return{
-    ... state,
-    product : state.product
-  }
-}
+// const mapStateToProps = (state)=>{
+//   return{
+//     ... state,
+//     product : state.product
+//   }
+// }
 
-const mapDispatchToProps = (dispatch)=>{
-    return {
-       fetchNow : () => dispatch(fetchProducts())
-    }
-}
-export default connect(mapStateToProps,mapDispatchToProps)(Products);
+// const mapDispatchToProps = (dispatch)=>{
+//     return {
+//        fetchNow : () => dispatch(fetchProducts())
+//     }
+// }
+//export default connect(mapStateToProps,mapDispatchToProps)(Products);
+
+export default Products;

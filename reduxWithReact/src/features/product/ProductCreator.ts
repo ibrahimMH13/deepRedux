@@ -28,10 +28,25 @@ export const fetchError = (error)=>{
         }
     }
 }
-
+//this for props way
 export const fetchProducts = () =>{
 
     return async (dispatch) =>{
+        try{
+            dispatch(fetchRequest);
+            const response = await axios.get("https://fakestoreapi.com/products");
+            console.log('inside fetchProducts creator',response.data);
+            const products = response.data.map(p=>p.title);
+            dispatch(fetchSuccess(products));
+        }catch(e){
+            //console.log(e);
+           // dispatch(fetchError(e.message))
+        }
+    }
+}
+export const fetchProductsWithHook = () =>{
+
+    return async (dispatch: any) =>{
         try{
             dispatch(fetchRequest);
             const response = await axios.get("https://fakestoreapi.com/products");
