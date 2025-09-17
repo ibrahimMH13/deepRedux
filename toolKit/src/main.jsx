@@ -15,7 +15,6 @@ const unsubscribe = store.subscribe(()=>{
 });
 const order = pizzaActions.pizza_order;
 store.dispatch(order());
-//unsubscribe();
 store.dispatch(order());
 store.dispatch(order());
 store.dispatch(order());
@@ -38,6 +37,7 @@ store.dispatch(orderBurger());
 
 
 
+unsubscribe();
 
 createRoot(document.getElementById('root')).render(
 
