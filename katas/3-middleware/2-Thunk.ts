@@ -93,3 +93,12 @@ const mid = applyMiddleware(thunk,logger);
 const store = createStore(productReducer,mid);
 store.dispatch(fetchProducts());
 
+
+console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
+
+const products = store.getState().products.map(p=>p.title);
+
+for(const p of products){
+    console.log(p + "\n");
+}
+
