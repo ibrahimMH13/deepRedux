@@ -91,14 +91,15 @@ const fetchProducts = ()=>{
 const logger = createLogger();
 const mid = applyMiddleware(thunk,logger);
 const store = createStore(productReducer,mid);
-store.dispatch(fetchProducts());
 
 
-console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
-
-const products = store.getState().products.map(p=>p.title);
-
-for(const p of products){
-    console.log(p + "\n");
-}
-
+const unsubscribe = store.subscribe(() => {
+    const s = store.getState();
+    console.log('################################################################')
+    if (!s.loading) {
+      for (const p of s.products) console.log(p.title);
+      unsubscribe(); // stop listening
+    }
+  });
+  
+  store.dispatch(fetchProducts());
