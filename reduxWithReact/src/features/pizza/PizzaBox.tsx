@@ -20,7 +20,7 @@ const mapStateToProps =(state)=>{
 }
 const mapDispatchToProps = (dispatch)=>{
     return {
-      orderPizzaNow :()=> dispatch(OrderPizza())
+      orderPizzaNow :(n)=> dispatch(OrderPizza(n))
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(PizzaBox);

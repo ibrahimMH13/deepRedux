@@ -3,10 +3,13 @@ import { PIZZA_ORDER } from "./PizzaType";
 
 
 
-export const OrderPizza =()=>{
+export const OrderPizza =(n)=>{
 
     return {
-        type: PIZZA_ORDER
+        type: PIZZA_ORDER,
+        payload:{
+            count :n
+        }
     }
 
 }
